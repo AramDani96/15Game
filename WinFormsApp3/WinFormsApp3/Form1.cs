@@ -39,40 +39,43 @@ namespace WinFormsApp3
             Button[,] Buttons = new Button[4, 4]{ { button1, button2, button3, button4 }, {button5, button6,
                 button7, button8 }, {button9, button10, button11, button12 }, {button13, button14, button15, button16 } };
 
-            if (button.Text != null)
+            if (button.Text != "")
             {
                 for (int i = 0; i < Buttons.GetLength(0); i++)
                 {
                     for (int j = 0; j < Buttons.GetLength(1); j++)
                     {
+                        if (Buttons[i, j] == button)
+                        {
                             if (i - 1 >= 0 && Buttons[i - 1, j].Text == "")
                             {
                                 temp.Text = button.Text;
                                 button.Text = "";
                                 Buttons[i - 1, j].Text = temp.Text;
-                                return;
+                                break;
                             }
                             else if (i + 1 <= 3 && Buttons[i + 1, j].Text == "")
                             {
                                 temp.Text = button.Text;
                                 button.Text = "";
                                 Buttons[i + 1, j].Text = temp.Text;
-                                return;
+                                break;
                             }
                             else if (j - 1 >= 0 && Buttons[i, j - 1].Text == "")
                             {
                                 temp.Text = button.Text;
                                 button.Text = "";
                                 Buttons[i, j - 1].Text = temp.Text;
-                                return;
+                                break;
                             }
                             else if (j + 1 <= 3 && Buttons[i, j + 1].Text == "")
                             {
                                 temp.Text = button.Text;
                                 button.Text = "";
                                 Buttons[i, j + 1].Text = temp.Text;
-                                return;
+                                break;
                             }
+                        }
                     }
                 }
             }
@@ -85,6 +88,10 @@ namespace WinFormsApp3
         private bool WinGame(Button[,] buttons)
         {
             int count = 1;
+            if (buttons[3, 3].Text != "")
+            {
+                return false;
+            }
             for (int i = 0; i < buttons.GetLength(0); i++)
             {
                 for (int j = 0; j < buttons.GetLength(1); j++)
