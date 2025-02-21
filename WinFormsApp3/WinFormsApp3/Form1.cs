@@ -96,6 +96,10 @@ namespace WinFormsApp3
             {
                 for (int j = 0; j < buttons.GetLength(1); j++)
                 {
+                    if (count == 16)
+                    {
+                        return true;
+                    }
                     if (buttons[i, j].Text != count.ToString())
                     {
                         return false;
@@ -124,7 +128,6 @@ namespace WinFormsApp3
                 numbers[i] = numbers[j];
                 numbers[j] = temp;
             }
-
             return numbers;
         }
     }
